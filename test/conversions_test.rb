@@ -3,16 +3,24 @@ require 'test_helper'
 include Conversions
 
 describe Conversions do
-  describe ".Boolean" do
-    it "returns true for truthy-looking values" do
-      [true, 1, '1', 't', 'T', 'true', 'TRUE'].each do |value|
-        assert { Boolean(value) }
-      end
-    end
+  describe "Configuration" do
+    describe "#conversion_methods" do
+      # it "includes 'Boolean' by default" do
+      #   assert { Conversions.configuration.conversion_methods.include?("Boolean") }
+      # end
 
-    it "returns false for all non-truthy-looking values" do
-      [false, 0, '0', 'f', 'F', 'false', 'FALSE', '', nil].each do |value|
-        deny { Boolean(value) }
+      it "is emptyable" do
+        Conversions.configure do |config|
+          config.conversion_methods = []
+        end
+        assert { Conversions.configuration.conversion_methods.empty? }
+      end
+
+      it "is customizable" do
+        Conversions.configure do |config|
+          config.conversion_methods = %w[Hello Goodbye]
+        end
+        assert { Conversions.configuration.conversion_methods == %w[Hello Goodbye] }
       end
     end
   end
