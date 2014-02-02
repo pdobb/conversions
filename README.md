@@ -25,25 +25,11 @@ And then execute:
 bundle
 ```
 
-## Configuration
-
-Create an initializer to set custom configuration options, if needed.
-
-```ruby
-# config/initializers/conversions.rb
-
-Conversions.configure do |config|
-  config.conversion_methods = ["Boolean"]
-end
-```
-
-Currently the only configuration option is `conversion_methods`, which is an Array of Conversion Method names to be required during gem initialization (by default this is set to `["Boolean"]`). The following section lists the available Conversion Method names.
-
 ## Available Conversion Methods
 
 * Boolean()
-  * Based on the, now deprecated, [ActiveRecord::ConnectionAdapters::Column.value_to_boolean](http://www.rubydoc.info/docs/rails/ActiveRecord/ConnectionAdapters/Column.value_to_boolean).
-  * Returns true for truthy-looking values, nil for blank values, otherwise false.
+  * Based on the now deprecated [ActiveRecord::ConnectionAdapters::Column.value_to_boolean](http://www.rubydoc.info/docs/rails/ActiveRecord/ConnectionAdapters/Column.value_to_boolean).
+  * Returns `true` for truthy-looking values, `nil` for blank values, and otherwise `false`.
   * The set of truthy-looking values is viewable in the source under `lib/conversions/boolean.rb`.
 
 ## Usage

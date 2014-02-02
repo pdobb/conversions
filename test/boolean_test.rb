@@ -10,7 +10,7 @@ describe Conversions do
       end
     end
 
-    it "returns false for all non-truthy-looking values" do
+    it "returns false for non-truthy-looking values" do
       [false, 0, '0', 'f', 'F', 'false', 'FALSE', '', nil].each do |value|
         deny { Boolean(value) }
       end
