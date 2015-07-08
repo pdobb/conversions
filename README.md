@@ -38,8 +38,14 @@ bundle
 You can either call the conversion method directly from the Conversions module:
 
 ```ruby
+Conversions.Boolean(1) # => true
 Conversions.Boolean("t") # => true
+Conversions.Boolean("true") # => true
+Conversions.Boolean(0) # => false
+Conversions.Boolean("f") # => false
+Conversions.Boolean("false") # => false
 Conversions.Boolean("some_value") # => false
+Conversions.Boolean(nil) # => false
 ```
 
 Or, you can include the Conversions module first:
@@ -47,8 +53,14 @@ Or, you can include the Conversions module first:
 ```ruby
 include Conversions
 
+Boolean(1) # => true
 Boolean("t") # => true
+Boolean("true") # => true
+Boolean(0) # => false
+Boolean("f") # => false
+Boolean("false") # => false
 Boolean("some_value") # => false
+Boolean(nil) # => false
 ```
 
 
