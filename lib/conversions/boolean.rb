@@ -13,7 +13,7 @@ module Conversions
   #   Boolean("True") # => true
   #   Boolean("TRUE") # => true
   def Boolean(value)
-    if value.is_a?(String) && value.blank?
+    if value.is_a?(String) && value =~ /\s.*/
       nil
     else
       [true, 1, "1", "t", "T", "true", "True", "TRUE"].include?(value)
